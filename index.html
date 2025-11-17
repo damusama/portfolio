@@ -1,14 +1,130 @@
-
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-    <meta charset="utf-8" />
-    <title>XXX's Curry Recipe</title>
-    <link rel="stylesheet" href="main.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ポートフォリオ</title>
+  <link rel="stylesheet" href="main.css">
 </head>
-<body>
-    <div id="loading">
-        <p>Loading...</p>
-        </div>
 
-    <div id="content">
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div>Loading 0%</div>
+    <div id="loading-bar"><div id="loading-bar-inner"></div></div>
+  </div>
+
+  <header class="slide-up">
+    <div class="header-section">
+      <div class="header-left">
+        <h1>My Portfolio</h1>
+      </div>
+      <nav class="header-nav">
+        <a href="#about">自己紹介</a>
+        <a href="#portfolio">作品</a>
+        <a href="#skills">スキル</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="about" class="slide-up">
+    <h2>自己紹介</h2>
+    <div class="about-container">
+      <div class="about-icon">
+        <img src="photo/proff.jpg" alt="プロフィール画像">
+      </div>
+      <p>公大高専2年のだむです。</p>
+      <p></p>
+    </div>
+  </section>
+
+  <section id="portfolio" class="slide-up">
+    <h2>過去の作品</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item" onclick="openModal('modal1')">
+        <img src="photo/ginga5.png" alt="work1">
+        <div class="desc">
+          <h3>銀河からの生還</h3>
+          <p>Goggle colabでのゲーム開発。</p>
         </div>
+      </div>
+      <div class="portfolio-item" onclick="openModal('modal2')">
+        <img src="photo/meron.jpg" alt="work2">
+        <div class="desc">
+          <h3>めろんぱんルンバ</h3>
+          <p>microbitを用いたルンバ制作。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h2>げ</h2>
+      <p>詳細な内容や画像、リンクをここに追加できます。</p>
+      <button class="modal-close" onclick="closeModal('modal1')">閉じる</button>
+    </div>
+  </div>
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h2>アプリ開発</h2>
+      <p>詳細な内容や画像、リンクをここに追加できます。</p>
+      <button class="modal-close" onclick="closeModal('modal2')">閉じる</button>
+    </div>
+  </div>
+
+  <section id="skills" class="slide-up">
+    <h2>スキル</h2>
+    <div class="skills">
+      <span class="skill"><img src="images/html.png" alt="HTML">HTML</span>
+      <span class="skill"><img src="images/css.png" alt="CSS">CSS</span>
+      <span class="skill"><img src="images/python.png" alt="Python">Python</span>
+      <span class="skill"><img src="images/arduino.png" alt="Arduino">Arduino</span>
+      <span class="skill"><img src="images/github.png" alt="Git/GitHub">Git/GitHub</span>
+    </div>
+  </section>
+
+  <hr style="border:1px solid #ccc; margin:40px 0;">
+
+  <section id="contact" class="slide-up contact-section">
+    <div class="contact-icons">
+      <a href="mailto:sample@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/username" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </section>
+
+  <script>
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      const loadingBar = document.getElementById('loading-bar-inner');
+      let progress = 0;
+      const interval = setInterval(()=>{
+        progress += Math.random() * 10;
+        if(progress >= 100) progress = 100;
+        loadingBar.style.width = progress + '%';
+        loadingScreen.querySelector('div').innerText = 'Loading ' + Math.floor(progress) + '%';
+        if(progress >= 100){
+          clearInterval(interval);
+          setTimeout(()=>{loadingScreen.style.display='none';}, 300);
+        }
+      }, 100);
+    });
+
+    function openModal(id){document.getElementById(id).style.display='flex';}
+    function closeModal(id){document.getElementById(id).style.display='none';}
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.2});
+      document.querySelectorAll('.portfolio-item, .slide-up').forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
+</html>

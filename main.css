@@ -1,21 +1,383 @@
-/* 画面全体を覆い、最前面に固定 */
-#loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #ffffff; /* 背景色 */
-    z-index: 9999; /* 最前面に表示 */
-    display: flex; /* 中央寄せに使う */
-    justify-content: center;
-    align-items: center;
-    /* 非表示にする時のアニメーションを設定 */
-    transition: opacity 0.5s ease;
+/* ------------------------------ */
+/*        フォント設定             */
+/* ------------------------------ */
+@font-face {
+  font-family: 'SDK_JP_Web';
+  src: url('./font/ja-jp.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* 非表示にするためのクラス */
-.loaded {
-    opacity: 0; /* 透明にしてフェードアウト */
-    visibility: hidden; /* 操作できないように完全に非表示 */
+body {
+  font-family: 'SDK_JP_Web', sans-serif;
+  line-height: 1.6;
+  background: #fdfdfd;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* サイト全体の背景 */
+body {
+  font-family: 'SDK_JP_Web', sans-serif;
+  line-height: 1.6;
+  color: #111;
+  /* 背景画像 */
+  background-image: url(photo/hosizora.jpg); 
+  background-size: cover;       /* 画面全体に拡大 */
+  background-position: center;  /* 中央に配置 */
+  background-attachment: fixed; /* スクロールしても固定 */
+  position: relative;
+}
+
+/* 暗くするオーバーレイ */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4); /* 黒の半透明で暗く */
+  z-index: -1; /* 背景として最背面 */
+}
+
+/* ------------------------------ */
+/*        ヘッダー設定            */
+/* ------------------------------ */
+/* ヘッダー全体 */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url('photo/yozora.jpg');
+  padding: 14px 20px; /* 高さを少し縮めた */
+  transition: all 0.3s ease;
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* 目次が右に見切れない */
+  margin: 0 auto;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* 左側タイトル */
+.header-left h1 {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.header-left p {
+  font-size: 0.9rem;
+  color: white;
+}
+
+/* ナビゲーション目次 */
+.header-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.header-nav a {
+  padding: 6px 12px;
+  border: 2px solid #4aa3ff;
+  background: rgba(74,163,255,0.2);
+  border-radius: 6px;
+  transition: 0.2s;
+  font-size: 0.85rem;
+  display: inline-block;
+  color: #ffffff; /* 白文字 */
+}
+
+.header-nav a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(255,255,255,0.4);
+}
+
+/* レスポンシブ */
+@media(max-width:860px) {
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .header-nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .header-nav a {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}
+
+/* ------------------------------ */
+/*        セクション共通          */
+/* ------------------------------ */
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  color: #ffffff;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* ------------------------------ */
+/*        自己紹介セクション       */
+/* ------------------------------ */
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #ffffff
+}
+.about-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;        /* 完全な丸に */
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: white;   /* 白い円 */
+  padding: 6px;              /* アイコンと白い円の間に余白 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* 立体感をつけたい場合 */
+}
+.about-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;        /* 中の画像も丸に */
+}
+
+/* ------------------------------ */
+/*       作品セクション            */
+/* ------------------------------ */
+.portfolio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.portfolio-item {
+  flex: 1 1 calc(50% - 20px);
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.portfolio-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease-out;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.portfolio-item .desc {
+  padding: 12px;
+}
+
+.portfolio-item .desc h3 {
+  margin-bottom: 6px;
+  font-size: 1.1rem;
+  color: #4dc0ff;
+}
+
+/* 作品ホバー時の浮き上がり */
+.portfolio-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* ------------------------------ */
+/*       モーダル設定              */
+/* ------------------------------ */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modal-close {
+  align-self: center;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #4dc0ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* ------------------------------ */
+/*       スキルセクション          */
+/* ------------------------------ */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e0f7ff;
+  color: #000000;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.skill img {
+  width: 24px;
+  height: 24px;
+}
+
+/* ------------------------------ */
+/*       お問い合わせセクション      */
+/* ------------------------------ */
+.contact-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.contact-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+.contact-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #4dc0ff;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.contact-icons a:hover {
+  background: #38a8e0;
+}
+
+/* ------------------------------ */
+/*       Loading Screen           */
+/* ------------------------------ */
+#loading-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  font-family: sans-serif;
+  z-index: 9999;
+}
+
+#loading-bar {
+  width: 100%;
+  max-width: 600px;
+  height: 8px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+#loading-bar-inner {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg,#4dc0ff,#7ee6ff);
+  transition: width 0.18s linear;
+}
+
+#loading-percent {
+  margin-top: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-align: center;
+}
+
+/* ------------------------------ */
+/*       Slide-in Animation       */
+/* ------------------------------ */
+.slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(.2,.9,.3,1);
+}
+
+.slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------------------ */
+/*       レスポンシブ調整         */
+/* ------------------------------ */
+@media(max-width:860px) {
+  .portfolio-item { flex: 1 1 100%; }
+  .header-section { flex-direction: column; align-items: flex-start; }
+  .header-nav { margin-top: 12px; }
 }
