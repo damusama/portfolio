@@ -17,7 +17,7 @@
   <header class="slide-up">
     <div class="header-section">
       <div class="header-left">
-        <h1>My Portfolio</h1>
+        <h1>--- damu's Portfolio ---</h1>
       </div>
       <nav class="header-nav">
         <a href="#about">自己紹介</a>
@@ -34,7 +34,7 @@
         <img src="photo/proff.jpg" alt="プロフィール画像">
       </div>
       <p>公大高専2年のだむです。</p>
-      <p></p>
+      <p>ゲーム</p>
     </div>
   </section>
 
@@ -58,25 +58,54 @@
     </div>
   </section>
 
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h2>げ</h2>
-      <p>詳細な内容や画像、リンクをここに追加できます。</p>
-      <button class="modal-close" onclick="closeModal('modal1')">閉じる</button>
+<div id="modal1" class="modal">
+  <div class="modal-content" style="max-height:90vh; overflow-y:auto;">
+
+    <!-- ▼ ヘッダー画像（上部に大きく表示） ▼ -->
+    <img src="photo/g-hedder.png" alt="" class="work-image" style=" width:100%; border-radius:10px; margin-bottom:15px;">
+    <!-- ▲ ヘッダー画像 ▲ -->
+    <p>銀河からの生還</p>
+    <p>プレイヤーが宇宙船を操作し、宇宙ステーションへの生還を目指すテキストベースのサバイバルゲーム
+    </p>
+    <p>＜遊び方＞</p>
+
+    <!-- ▼ 画像 2 枚（横並び） ▼ -->
+    <table style="width:100%; text-align:center; margin:20px 0;">
+      <tr>
+        <td style="width:45%;">
+          <img src="photo/g-ive.png" alt="" class="work-image" style="width:100%; border-radius:10px;">
+          <div>イベントが発生するので選択</div>
+        </td>
+
+        <td style="width:10%; font-size:2rem;  font-weight:bold;">→</td>
+
+        <td style="width:45%;">
+          <img src="photo/g-ivve.png" alt="" class="work-image" style="width:100%; border-radius:10px;">
+          <div>...</div>
+        </td>
+      </tr>
+    </table>
+    <!-- ▲ 横並び画像 ▲ -->
+
+    <!-- ▼ 中央画像 ▼ -->
+    <div style="text-align:center; margin:30px 0;">
+      <img src="photo/g-clear.png" alt="" class="work-image" style="width:80%; max-width:500px; border-radius:10px;">
+      <div>ゲームクリアを目指そう！</div>
     </div>
+    <!-- ▲ 中央画像 ▲ -->
+
+    <p>☆ゲームプレイは<a href="https://colab.research.google.com/drive/1JYmGK3D9sv19R1p607_mHlagFSh21Bw5?usp=sharing&classId=246edd3b-092a-476c-8957-e6f0f67944ef&assignmentId=088c058f-36d3-493f-9a62-b2a574b01d46&submissionId=34129313-66ac-d4f2-4caf-57a214cf7c1d#scrollTo=EnMqIC7OaqQh" target="_blank">こちら</a>☆</p>
+    <button class="modal-close" onclick="closeModal('modal1')">✖</button>
+
   </div>
-  <div id="modal2" class="modal">
-    <div class="modal-content">
-      <h2>アプリ開発</h2>
-      <p>詳細な内容や画像、リンクをここに追加できます。</p>
-      <button class="modal-close" onclick="closeModal('modal2')">閉じる</button>
-    </div>
-  </div>
+</div>
+
+
 
   <section id="skills" class="slide-up">
     <h2>スキル</h2>
     <div class="skills">
-      <span class="skill"><img src="images/html.png" alt="HTML">HTML</span>
+      <span class="skill"><img src="photo/html.png" alt="HTML">HTML</span>
       <span class="skill"><img src="images/css.png" alt="CSS">CSS</span>
       <span class="skill"><img src="images/python.png" alt="Python">Python</span>
       <span class="skill"><img src="images/arduino.png" alt="Arduino">Arduino</span>
