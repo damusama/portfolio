@@ -76,7 +76,7 @@ header {
   justify-content: space-between;
   align-items: center;
   background-image: url('photo/yozora.jpg');
-  padding: 14px 20px; /* 高さを少し縮めた */
+  padding: 8px 12px; /* コンパクト化（上：8px、左右：12px） */
   transition: all 0.3s ease;
   /* max-width: 1400px; 目次が右に見切れない */
   margin: 0 auto;
@@ -86,13 +86,13 @@ header {
 
 /* 左側タイトル */
 .header-left h1 {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: white;
-  margin-bottom: 2px;
+  margin-bottom: 0;
 }
 
 .header-left p {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: white;
 }
 
@@ -100,16 +100,16 @@ header {
 .header-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .header-nav a {
-  padding: 6px 12px;
-  border: 2px solid #4aa3ff;
-  background: rgba(74,163,255,0.2);
+  padding: 4px 8px;
+  border: 1px solid #4aa3ff;
+  background: rgba(74,163,255,0.18);
   border-radius: 6px;
-  transition: 0.2s;
-  font-size: 0.85rem;
+  transition: 0.15s;
+  font-size: 0.8rem;
   display: inline-block;
   color: #ffffff; /* 白文字 */
 }
@@ -124,7 +124,7 @@ header {
   .header-section {
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px 20px;
+    padding: 8px 12px;
   }
 
   .header-nav {
