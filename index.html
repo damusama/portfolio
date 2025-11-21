@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ポートフォリオ</title>
   <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="photo/proff.jpg" type="image/jpeg">
+  <link rel="shortcut icon" href="photo/proff.jpg">
 </head>
 
 <body>
@@ -17,7 +19,7 @@
   <header class="slide-up">
     <div class="header-section">
       <div class="header-left">
-        <h1>--- damu's Portfolio ---</h1>
+        <h1>-- damu's Portfolio --</h1>
       </div>
       <nav class="header-nav">
         <a href="#about">自己紹介</a>
@@ -33,8 +35,7 @@
       <div class="about-icon">
         <img src="photo/proff.jpg" alt="プロフィール画像">
       </div>
-      <p>公大高専2年のだむです。</p>
-      <p>ゲーム</p>
+      <p>公大高専2年のだむです。<br>趣味は音楽を聴いたり弾いたりすること。</p>
     </div>
   </section>
 
@@ -62,15 +63,15 @@
   <div class="modal-content" style="max-height:90vh; overflow-y:auto;">
 
     <!-- ▼ ヘッダー画像（上部に大きく表示） ▼ -->
-    <img src="photo/g-hedder.png" alt="" class="work-image" style=" width:100%; border-radius:10px; margin-bottom:15px;">
+    <img src="photo/g-hedder.png" alt="" class="work-image work-header-image" style="border-radius:10px; margin-bottom:15px;">
     <!-- ▲ ヘッダー画像 ▲ -->
-    <p>銀河からの生還</p>
-    <p>プレイヤーが宇宙船を操作し、宇宙ステーションへの生還を目指すテキストベースのサバイバルゲーム
+    <p>--銀河からの生還--</p>
+    <p>プレイヤーが宇宙船を操作し、宇宙ステーションへの生還を目指すテキストベースのサバイバルゲームです。
     </p>
     <p>＜遊び方＞</p>
 
     <!-- ▼ 画像 2 枚（横並び） ▼ -->
-    <table style="width:100%; text-align:center; margin:20px 0;">
+    <table class="work-images-row" style="width:100%; text-align:center; margin:20px 0;">
       <tr>
         <td style="width:45%;">
           <img src="photo/g-ive.png" alt="" class="work-image" style="width:100%; border-radius:10px;">
@@ -81,7 +82,7 @@
 
         <td style="width:45%;">
           <img src="photo/g-ivve.png" alt="" class="work-image" style="width:100%; border-radius:10px;">
-          <div>...</div>
+          <div>宇宙船を修復したり、<br>宇宙人と会話したりして</div>
         </td>
       </tr>
     </table>
@@ -90,15 +91,60 @@
     <!-- ▼ 中央画像 ▼ -->
     <div style="text-align:center; margin:30px 0;">
       <img src="photo/g-clear.png" alt="" class="work-image" style="width:80%; max-width:500px; border-radius:10px;">
-      <div>ゲームクリアを目指そう！</div>
+      <div>ゲームクリアを目指しましょう！</div>
     </div>
     <!-- ▲ 中央画像 ▲ -->
 
-    <p>☆ゲームプレイは<a href="https://colab.research.google.com/drive/1JYmGK3D9sv19R1p607_mHlagFSh21Bw5?usp=sharing&classId=246edd3b-092a-476c-8957-e6f0f67944ef&assignmentId=088c058f-36d3-493f-9a62-b2a574b01d46&submissionId=34129313-66ac-d4f2-4caf-57a214cf7c1d#scrollTo=EnMqIC7OaqQh" target="_blank">こちら</a>☆</p>
+    <p><a href="https://colab.research.google.com/drive/1JYmGK3D9sv19R1p607_mHlagFSh21Bw5?usp=sharing&classId=246edd3b-092a-476c-8957-e6f0f67944ef&assignmentId=088c058f-36d3-493f-9a62-b2a574b01d46&submissionId=34129313-66ac-d4f2-4caf-57a214cf7c1d#scrollTo=EnMqIC7OaqQh" target="_blank">☆ゲームプレイはこちら☆</a></p>
     <button class="modal-close" onclick="closeModal('modal1')">✖</button>
 
   </div>
 </div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content" style="max-height:90vh; overflow-y:auto;">
+
+    <!-- ▼ ヘッダー画像（上部に大きく表示） ▼ -->
+    <img src="photo/meron.jpg" alt="" class="work-image work-header-image" style="border-radius:10px; margin-bottom:15px;">
+    <!-- ▲ ヘッダー画像 ▲ -->
+    <p>--めろんぱんルンバ--</p>
+    <p>micro:bitを用いて製作した自律走行ロボット。<br>超音波センサーで障害物を避けながら掃除をしてくれます。</p>
+
+    <!-- ▼ 画像 2 枚（横並び） ▼ -->
+    <table style="width:100%; text-align:center; margin:20px 0;">
+      <tr>
+        <td style="width:45%;">
+          <img src="photo/runba1.jpg" alt="" class="work-image" style="width:100%; border-radius:10px;">
+          <div>正面</div>
+        </td>
+
+        <td style="width:10%; font-size:2rem;  font-weight:bold;">・</td>
+
+        <td style="width:45%;">
+          <img src="photo/kairo.jpg" alt="" class="work-image" style="width:100%; border-radius:10px;">
+          <div>回路</div>
+        </td>
+      </tr>
+    </table>
+    <!-- ▲ 横並び画像 ▲ -->
+
+    <p>＜実際に動いている様子＞</p>
+    <!-- ▼ 動画（必要に応じて src を差し替えてください） ▼ -->
+    <div class="modal-video" style="text-align:center; margin:20px 0;">
+      <video class="modal-video-player" controls preload="metadata">
+        <!-- 例: ソースファイルを `video/your-video.mp4` に置いてください -->
+        <source src="video/meronugoku.mp4" type="video/mp4">
+      </video>
+    </div>
+    <!-- ▲ 動画 ▲ -->
+
+    <button class="modal-close" onclick="closeModal('modal2')">✖</button>
+
+  </div>
+</div>
+
+
+
 
 
 
@@ -106,10 +152,10 @@
     <h2>スキル</h2>
     <div class="skills">
       <span class="skill"><img src="photo/html.png" alt="HTML">HTML</span>
-      <span class="skill"><img src="images/css.png" alt="CSS">CSS</span>
-      <span class="skill"><img src="images/python.png" alt="Python">Python</span>
-      <span class="skill"><img src="images/arduino.png" alt="Arduino">Arduino</span>
-      <span class="skill"><img src="images/github.png" alt="Git/GitHub">Git/GitHub</span>
+      <span class="skill"><img src="photo/css.png" alt="CSS">CSS</span>
+      <span class="skill"><img src="photo/python.png" alt="Python">Python</span>
+      <span class="skill"><img src="photo/arduino.png" alt="Arduino">Arduino</span>
+      <span class="skill"><img src="photo/githubneko.png" alt="Git/GitHub">Git/GitHub</span>
     </div>
   </section>
 
@@ -117,13 +163,20 @@
 
   <section id="contact" class="slide-up contact-section">
     <div class="contact-icons">
-      <a href="mailto:sample@example.com" target="_blank"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/username" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/damusama" target="blank">
+      <img src="photo/githubneko.png" class="contact-icon-img">
+      </a>
     </div>
   </section>
 
   <script>
+    function adjustBodyPaddingForHeader(){
+      const header = document.querySelector('header');
+      if(!header) return;
+      const h = header.getBoundingClientRect().height;
+      document.body.style.paddingTop = h + 'px';
+    }
+
     window.addEventListener('load', () => {
       const loadingScreen = document.getElementById('loading-screen');
       const loadingBar = document.getElementById('loading-bar-inner');
@@ -138,6 +191,37 @@
           setTimeout(()=>{loadingScreen.style.display='none';}, 300);
         }
       }, 100);
+
+      // ヘッダー高さに合わせて body の余白を調整
+      adjustBodyPaddingForHeader();
+      window.addEventListener('resize', adjustBodyPaddingForHeader);
+      
+      // ヘッダーをスクロールで隠す/表示する挙動
+      (function(){
+        const header = document.querySelector('header');
+        if(!header) return;
+        let lastScrollY = window.scrollY || 0;
+        let ticking = false;
+        const threshold = 10; // しきい値（px）
+
+        window.addEventListener('scroll', () => {
+          const currentY = window.scrollY || 0;
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              if (currentY > lastScrollY + threshold) {
+                // 下へスクロールしている → ヘッダーを隠す
+                header.classList.add('header--hidden');
+              } else if (currentY < lastScrollY - threshold || currentY <= 0) {
+                // 上へスクロールしている、またはトップに到達 → ヘッダーを表示
+                header.classList.remove('header--hidden');
+              }
+              lastScrollY = currentY;
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, {passive: true});
+      })();
     });
 
     function openModal(id){document.getElementById(id).style.display='flex';}
@@ -153,6 +237,19 @@
         });
       }, {threshold:0.2});
       document.querySelectorAll('.portfolio-item, .slide-up').forEach(el => observer.observe(el));
+
+      // DOM が準備できたら一度余白を調整（読み込み前にヘッダーの高さが変わる場合に備える）
+      adjustBodyPaddingForHeader();
+    });
+
+    // モーダルの背景（空白）をクリックしたらモーダルを閉じる
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        // .modal-content の外側（バックドロップ）をクリックした場合に閉じる
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
     });
   </script>
 </body>

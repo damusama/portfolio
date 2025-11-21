@@ -8,6 +8,11 @@
   font-style: normal;
 }
 
+/* スムーズスクロール（目次リンク） */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'SDK_JP_Web', sans-serif;
   line-height: 1.6;
@@ -50,6 +55,21 @@ body::before {
 /* ------------------------------ */
 /*        ヘッダー設定            */
 /* ------------------------------ */
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: transform 0.25s ease-in-out;
+}
+
+/* スクロールでヘッダーを隠すときのクラス */
+.header--hidden {
+  transform: translateY(-110%);
+}
 /* ヘッダー全体 */
 .header-section {
   display: flex;
@@ -58,9 +78,7 @@ body::before {
   background-image: url('photo/yozora.jpg');
   padding: 14px 20px; /* 高さを少し縮めた */
   transition: all 0.3s ease;
-  position: relative;
-  width: 100%;
-  max-width: 1200px; /* 目次が右に見切れない */
+  /* max-width: 1400px; 目次が右に見切れない */
   margin: 0 auto;
   box-sizing: border-box;
   z-index: 1000;
@@ -74,7 +92,7 @@ body::before {
 }
 
 .header-left p {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: white;
 }
 
@@ -185,6 +203,9 @@ h2 {
   position: relative;
   opacity: 0;
   transform: translateY(50px);
+  padding: 4px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+  transition: 0.2s;
 }
 
 .portfolio-item.visible {
@@ -247,6 +268,66 @@ h2 {
   box-shadow: 0 0 20px rgba(255,255,255,0.4);
 }
 
+/* モーダル上部のヘッダー画像を共通サイズに揃える */
+.modal .work-header-image {
+  width: 100%;
+  max-height: 200px; /* 表示したい高さに合わせて調整してください */
+  object-fit: cover;
+  display: block;
+}
+
+/* 動画プレイヤー（モーダル内） */
+.modal .modal-video-player {
+  width: 80%;
+  max-width: 640px;
+  height: auto;
+  border-radius: 8px;
+  background: #000;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+.modal-video {
+  display: flex;
+  justify-content: center;
+}
+
+/* ラッパーに相対位置を付与してオーバーレイを配置 */
+.modal .modal-video-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* 動画左上のオーバーレイテキスト */
+.modal .video-overlay {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 10;
+  pointer-events: none; /* オーバーレイをクリック可能にしたければこれを削除 */
+}
+
+/* modal1 の横並び画像の高さを揃える */
+#modal1 .work-images-row .work-image {
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  /* モバイルでは自然な高さにする（縦並びになれば自動で縮む） */
+  #modal1 .work-images-row .work-image {
+    height: auto;
+  }
+}
+
 
 .modal-close {
   align-self: center;
@@ -274,57 +355,56 @@ h2 {
 
 .skill {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: #e0f7ff;
   color: #000000;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-weight: 700;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-align: center;
 }
 
 .skill img {
-  width: 24px;
-  height: 24px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .skill img { width: 64px; height: 64px; }
+  .skill { padding: 10px 12px; font-size: 1rem; }
 }
 
 /* ------------------------------ */
 /*       お問い合わせセクション      */
 /* ------------------------------ */
-.contact-section {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.contact-section h2 {
-  font-size: 1.2rem;
-  margin-bottom: 12px;
-}
-
 .contact-icons {
   display: flex;
+  gap: 20px;
   justify-content: center;
-  align-items: center;
-  gap: 25px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
-.contact-icons a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
+.contact-icon-img {
+  width: 32px;          /* アイコン画像のサイズ */
   height: 32px;
-  border-radius: 50%;
-  background: #4dc0ff;
-  color: white;
-  font-size: 16px;
-  transition: 0.3s;
+  border-radius: 50%;   /* 丸くする */
+  padding: 5px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+  transition: 0.2s;
 }
 
-.contact-icons a:hover {
-  background: #38a8e0;
+.contact-icon-img:hover {
+  transform: scale(1.1);   /* ホバー時に少し大きく */
+  box-shadow: 0 0 15px rgba(255,255,255,0.8);
 }
+
+
 
 /* ------------------------------ */
 /*       Loading Screen           */
